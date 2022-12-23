@@ -1,0 +1,39 @@
+﻿@model qrcodegenerator.Models.QRModel
+
+<h1>qrcode</h1>
+
+<h4>QRModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="qrcode">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="QRCodeText" class="control-label"></label>
+                <input name="QRCodeText" class="form-control" autocomplete="off"/>
+                <span asp-validation-for="QRCodeText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Gerar qr code" class="btn btn-outline-success"/>
+            </div>
+            @if (@ViewBag.Message != null)
+            {
+            <label>@ViewBag.Message</label>
+            <img src="/img/generatedqrcode.png"/>
+            <a href="/img/generatedqrcode.png" class="btn btn-outline-success" download>Baixar QR Code</a>
+            }
+        </form>
+
+    </div>
+</div>
+
+<div>
+   
+   
+   
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
